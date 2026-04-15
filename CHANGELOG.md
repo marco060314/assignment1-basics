@@ -2,6 +2,9 @@
 
 All changes we make to the assignment code or PDF will be documented in this file.
 
+## [26.0.3] 2026-04-07
+- handout: Adjust leaderboard time limit from 90 to 45 minutes
+
 ## [26.0.2] 2026-04-06
 - handout: Fix SGD example bug
 - code: Add CLAUDE.md
