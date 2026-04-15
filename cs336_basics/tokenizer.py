@@ -52,6 +52,32 @@ class tokenizer:
 
             best_pair = max(pair_counts.items(), key=lambda x: (x[1], x[0]))[0] #tie-break max
 
+            merges.append(best_pair)
+            new_word_freq = {}
+            for word, freq in word_freq.items():
+                new_word = []
+                i = 0
+                while i < len(word): #merge best_pairs
+                    if i < len(word)-1 and (word[i], word[i+1]) == best_pair:
+                        new_word.append(word[i:i+2])  # merged
+                        i += 2
+                    else:
+                        new_word.append((word[i],))
+                        i += 1
+                #remove tuple to change into regular list
+                new_word = tuple(sum(new_word, ()))
+                new_word_freq[new_word] = freq
+            word_freq = new_word_freq
+            #add pair to vocab and increment id
+            vocab[next_id] = bytes(best_pair)
+            next_id += 1
+        return vocab, merges
+
+
+
+
+
+
         
 
 
